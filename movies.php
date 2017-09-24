@@ -7,7 +7,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "iwai";
+$password = "";
 $dbname = "movies";
 
 $debug = false;
