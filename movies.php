@@ -73,7 +73,7 @@ foreach ($dir as $fileinfo) {
 	$filename = $fileinfo->getFilename();
 	$ext = pathinfo($fileinfo, PATHINFO_EXTENSION);
 
-	if (!(($ext == "php") || ($ext == "jpg") || ($ext == "png") || ($ext == "css") || ($ext == "sh") || ($ext == "js") || ($ext == "md") || (strpos($filename,"Z_seen") !== false) || (strpos($filename,".git") !== false) || (strpos($filename,".gitignore") !== false))) {
+	if (!(($ext == "php") || ($ext == "jpg") || ($ext == "png") || ($ext == "css") || ($ext == "sh") || ($ext == "js") || ($ext == "md") || (strpos($filename,"Z_seen") !== false) || (strpos($filename,".git") !== false) || (strpos($filename,".gitignore") !== false) || (strpos($filename,".idea") !== false))) {
 		$title = substr($filename, 0, strpos($filename, '['));
 		$language = substr($filename, strpos($filename, '[') + 1, 2);
 		$year = substr($filename, strpos($filename, '(') + 1, 4);
