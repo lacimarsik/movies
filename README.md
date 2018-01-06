@@ -1,6 +1,6 @@
 # movies
 
-What if you are lucky to have a nice movie librarie on your machine, but also want to have a nice selection screen for your next movie such as is on Netflix or iTunes?
+What if you are lucky to have a nice movie library on your machine, but also want to have a nice selection screen for your next movie such as is on Netflix or iTunes?
 
 ![Screenshot of movies](https://github.com/lacimarsik/movies/blob/master/screen.png)
 
