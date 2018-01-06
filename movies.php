@@ -30,7 +30,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Run movie if asked for
 if ($_GET['id']) {
 	$sql= "SELECT * FROM movies WHERE id = " . $_GET['id'];
-	$conn->query($sql);
 	$result = $conn->query($sql);
 	while ($row = mysqli_fetch_assoc($result)) {
 		$movie_path = $row['title'] . "[" . $row['language'] . "] (" . $row['year'] . ")";
@@ -139,7 +138,7 @@ foreach ($dir as $fileinfo) {
 			$sql2 = "UPDATE movies SET title = '" . $title . "', year = '" . $year . "', language = '" . $language . "', subtitles = '" . $subtitles . "', csfd = '" . $csfd . "', active = '" . $active . "', downloaded = '" . $downloaded . "', rating = '" . $rating . "', poster = '" . $poster . "', subtitles_checked = '" . $subtitles_checked . "', sync = '" . $sync . "' WHERE title = '" . $title . "'";
 			$result2 = $conn->query($sql2);
 		} else {
-			$sql2 = "INSERT INTO movies VALUES ('', '" . $title . "', '" . $year . "', '" . $language . "', '" . $subtitles . "', '" . $csfd . "', '" . $active . "', '" . $downloaded . "', '" . $rating . "', '" . $poster . "', '" . $subtitles_checked . "', '" . $sync . ")";
+			$sql2 = "INSERT INTO movies VALUES ('', '" . $title . "', '" . $year . "', '" . $language . "', '" . $subtitles . "', '" . $csfd . "', '" . $active . "', '" . $downloaded . "', '" . $rating . "', '" . $poster . "', '" . $subtitles_checked . "', '" . $sync . "')";
 			$result2 = $conn->query($sql2);
 		}
 	}
