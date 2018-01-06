@@ -42,7 +42,7 @@ if ($_GET['id']) {
 		foreach ($dir as $fileinfo) {
 			$filename = $fileinfo->getFilename();
 			$ext = pathinfo($fileinfo, PATHINFO_EXTENSION);
-			if (($ext == "avi") || ($ext == "mp4")) {
+			if (($ext == "avi") || ($ext == "mp4") || ($ext == "mkv")) {
 ?>
 <div class='run alert alert-success'>
 	<button class="btn btn-default js-textareacopybtn">Copy</button>
