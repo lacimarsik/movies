@@ -7,7 +7,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "iwai";
 $dbname = "movies";
 
 $debug = false;
@@ -93,7 +93,7 @@ foreach ($dir as $fileinfo) {
 				if (($ext2 == "avi") || ($ext2 == "mp4")) {
 					$downloaded = "Yes";
 				}
-				if ($ext2 == "srt") {
+				if (($ext2 == "srt") || ($ext2 == "sub")) {
 					$subtitles = "Yes";
 					// Not working yet: Convert subtitles to UTF-8 if necessary
 					//exec("iconv -f windows-1250 -t utf-8 '" getcwd() . $filename .  "'/'" . $filename2 . "' > tempsrt");
