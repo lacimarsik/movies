@@ -1,6 +1,6 @@
 # movies
 
-What if you are lucky to have a nice movie library on your machine, but you neglect a nice selection screen for your next movie such as is on Netflix or iTunes?
+What if you are lucky to have a nice movie library on your machine, but you neglect a nice selection screen for your next movie such as is on Netflix or iTunes? Good to have for a well-prepared movie night ;)
 
 ![Screenshot of movies](https://github.com/lacimarsik/movies/blob/master/screen.png)
 
@@ -16,4 +16,4 @@ All you need to do is checkout, and put the movie folders in the checkout-ed rep
 * Put additional empty files to the folder, the script will use them to gather more information on the movie: `XX.rating` for rating, `XYZ.csfd` for CSFD.cz rating, `subtitles.checked` to label the subtitles as checked, `-42.sync` to say that the movie subtitles needs to be hastened 4.2 seconds (works with VLC player).
 * After you finished watching a movie, move it to a `Z_seen` folder (you may need to create this folder in the root directory). That way, the movies already seen will be shown in "Already seen" section, apart from the new movies. For these movies, feel free to remove the `mp4` (`avi`, `mkv`) movie file, if you want to save space on your drive. However, you may want to mark a movie for a re-play one day. To do that, simply put an empty file named `yes.replay` to the movie folder (do not move to `Z_seen`) - that way, the movie will be shown in the "Replay" section, apart from new movies or seen movies.
 
-Run your `movies.php` on your local PHP server, click the movie, and enjoy!
+Run your `movies.php` on your local PHP server, select a movie with your movie-night friends, click the movie, and enjoy!
