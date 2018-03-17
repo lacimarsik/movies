@@ -64,7 +64,7 @@ if ($debug) {
 }
 
 // Make movies inactive first (not present on the disk)
-$sql0= "UPDATE movies SET active = 0, poster = 'No', downloaded = 'No'";
+$sql0= "UPDATE movies SET active = 0, replay = 0, poster = 'No', downloaded = 'No'";
 $conn->query($sql0);
 
 $dir = new DirectoryIterator(dirname(__FILE__));
@@ -85,6 +85,7 @@ foreach ($dir as $fileinfo) {
 			$csfd = "No";
 			$rating = "No";
 			$active = "1";
+			$replay = "0";
 			$sync = "No";
 			$dir2 = new DirectoryIterator($fileinfo->getFilename());
 			foreach ($dir2 as $fileinfo2) {
@@ -110,6 +111,9 @@ foreach ($dir as $fileinfo) {
 				if ($ext2 == "checked") {
 					$subtitles_checked = "Yes";
 				}
+				if ($ext2 == "replay") {
+					$replay = "1";
+				}
 				if ($ext2 == "sync") {
 					$sync = substr($filename2, 0, strpos($filename2, '.'));
 				}
@@ -129,16 +133,17 @@ foreach ($dir as $fileinfo) {
 			echo 'poster: ' . $poster . '<br />';
 			echo 'csfd: ' . $csfd . '<br />';
 			echo 'rating: ' . $rating . '<br />';
+			echo 'replay: ' . $replay . '<br />';
 		}
 
 		$sql1 = "SELECT id FROM movies WHERE title = '" . $title . "'";
 		$result1 = $conn->query($sql1);
 	
 		if ($result1->num_rows > 0) {
-			$sql2 = "UPDATE movies SET title = '" . $title . "', year = '" . $year . "', language = '" . $language . "', subtitles = '" . $subtitles . "', csfd = '" . $csfd . "', active = '" . $active . "', downloaded = '" . $downloaded . "', rating = '" . $rating . "', poster = '" . $poster . "', subtitles_checked = '" . $subtitles_checked . "', sync = '" . $sync . "' WHERE title = '" . $title . "'";
+			$sql2 = "UPDATE movies SET title = '" . $title . "', year = '" . $year . "', language = '" . $language . "', subtitles = '" . $subtitles . "', csfd = '" . $csfd . "', active = '" . $active . "', replay = '" . $replay . "', downloaded = '" . $downloaded . "', rating = '" . $rating . "', poster = '" . $poster . "', subtitles_checked = '" . $subtitles_checked . "', sync = '" . $sync . "' WHERE title = '" . $title . "'";
 			$result2 = $conn->query($sql2);
 		} else {
-			$sql2 = "INSERT INTO movies VALUES ('', '" . $title . "', '" . $year . "', '" . $language . "', '" . $subtitles . "', '" . $csfd . "', '" . $active . "', '" . $downloaded . "', '" . $rating . "', '" . $poster . "', '" . $subtitles_checked . "', '" . $sync . "')";
+			$sql2 = "INSERT INTO movies VALUES ('', '" . $title . "', '" . $year . "', '" . $language . "', '" . $subtitles . "', '" . $csfd . "', '" . $active . "', '" . $replay . "', '" . $downloaded . "', '" . $rating . "', '" . $poster . "', '" . $subtitles_checked . "', '" . $sync . "')";
 			$result2 = $conn->query($sql2);
 		}
 	}
@@ -151,7 +156,7 @@ foreach ($dir as $fileinfo) {
 	<div class="row">
 <?php
 // Showing the movies
-$sql3 = "SELECT * FROM movies WHERE active = '1'";
+$sql3 = "SELECT * FROM movies WHERE active = '1' AND replay = '0'";
 $result3 = $conn->query($sql3);
 
 while ($row = mysqli_fetch_assoc($result3)) {
@@ -177,13 +182,41 @@ while ($row = mysqli_fetch_assoc($result3)) {
 	</div>
 </div>
 
+<h1>Replay</h1>
+<div class="container seen">
+	<div class="row">
+
+<?php
+// Showing the movies
+$sql3 = "SELECT * FROM movies WHERE active = '1' AND replay = '1'";
+$result3 = $conn->query($sql3);
+
+while ($row = mysqli_fetch_assoc($result3)) {
+	$poster_path = "./" . $row['title'] . "[" . $row['language'] . "] (" . $row['year'] . ")/poster.jpg";
+	
+?>
+		<div class="col-md-3 col-sm-4 col-xs-6 movie">
+			<a href="?id=<?php echo $row['id']?>"><img class="img-responsive poster" src="<?php echo $poster_path; ?>" /></a>
+			<div class="info">
+				<?php echo $row['title'];?><br />
+				<?php echo $row['year'];?><br />
+				<?php echo $row['language']; if ($row['subtitles'] == "Yes") { echo ", CZ subtitles"; } if ($row['subtitles_checked'] == "Yes") { echo ", <span class='checked'>checked</span>"; }?><br />
+				<?php echo "<a target='_blank' href='https://www.csfd.cz/film/" . $row['csfd']. "'>ČSFD</a>: " . $row['rating'] . "%";?><br />
+			</div>
+		</div>
+<?php
+}
+?>
+	</div>
+</div>
+
 <h1>Already seen</h1>
 <div class="container seen">
 	<div class="row">
 
 <?php
 // Showing the movies
-$sql3 = "SELECT * FROM movies WHERE active = '0'";
+$sql3 = "SELECT * FROM movies WHERE active = '0' AND replay = '0'";
 $result3 = $conn->query($sql3);
 
 while ($row = mysqli_fetch_assoc($result3)) {
