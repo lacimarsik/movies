@@ -230,7 +230,6 @@ while ($row = mysqli_fetch_assoc($result3)) {
 ?>
 		<div class="col-md-3 col-sm-4 col-xs-6 movie">
 			<a href="?id=<?php echo $row['id']?>"><img class="img-responsive poster" src="<?php echo $poster_path; ?>" /></a>
-			<img class="img-responsive poster" src="<?php echo $poster_path; ?>" />
 			<div class="info">
 				<?php echo $row['title'];?><br />
 				<?php echo $row['year'];?><br />
