@@ -4,4 +4,4 @@ What if you are lucky to have a nice movie library on your machine, but you negl
 
 ![Screenshot of movies](https://github.com/lacimarsik/movies/blob/master/screen.png)
 
-Features of this straight-forwardedly-coded PHP+MySQL solution is in the [wiki](https://github.com/lacimarsik/movies/wiki)
+Features of this straight-forwardedly-coded PHP+MySQL solution are listed in the [wiki](https://github.com/lacimarsik/movies/wiki)

@@ -5,10 +5,7 @@
 </head>
 <body>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "iwai";
-$dbname = "movies";
+include 'credentials.php';
 
 $debug = false;
 error_reporting(E_ERROR | E_PARSE);
