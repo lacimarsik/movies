@@ -271,6 +271,17 @@ while ($row = mysqli_fetch_assoc($result3)) {
 	</div>
 </div>
 
+<script>
+function show() { document.getElementById("hide").style.display = "block"; document.getElementById("showbutton").style.display = "none"; document.getElementById("hidebutton").style.display = "inline"; }
+function hide() { document.getElementById("hide").style.display = "none"; document.getElementById("showbutton").style.display = "inline"; document.getElementById("hidebutton").style.display = "none"; }
+</script>
+
+<div class="buttons">
+<a id="showbutton" class="pointer" onclick="show()"><strong>SHOW MORE</strong></a><a id="hidebutton" class="pointer" style="display: none;" onclick="hide()"><strong>HIDE</strong></a>
+</div>
+<br />
+
+<div id="hide" style="display: none;">
 <h1>Already seen</h1>
 <div class="container seen">
 	<div class="row">
@@ -330,6 +341,8 @@ while ($row = mysqli_fetch_assoc($result3)) {
 <?php
 $conn->close();
 ?>
+
+</div>
 </body>
 </html>
 
